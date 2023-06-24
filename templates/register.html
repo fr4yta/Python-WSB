@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rejestracja</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-5 text-center">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class="alert alert-primary rounded text-start">
+                        {{ messages[0] }}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+
+                <h3>Zarejestruj się w systemie.</h3>
+                <form method="POST" action="/register">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="username" placeholder="Nazwa użytkownika" required />
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" name="password" placeholder="Hasło" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Zarejestruj</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

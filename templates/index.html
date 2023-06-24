@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-5 text-center">
+                <h3>Witaj na stronie głównej, aby zobaczyć ceny złota zaloguj się lub zarejestruj.</h3>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

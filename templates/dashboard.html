@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-5 text-center">
+                <canvas id="goldChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+    <script type="text/javascript">
+        var goldData = {{ goldData | tojson }};
+
+        var months = Object.keys(goldData);
+        var averages = Object.values(goldData);
+
+        var ctx = document.getElementById('goldChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Cena złota',
+                    data: averages,
+                    backgroundColor: 'gold',
+                    borderColor: 'rgba(255, 255, 0, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
